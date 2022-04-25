@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -41,4 +42,34 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Obtiene todas las cargas del usuario.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function cargas(): HasMany
+    {
+        return $this->hasMany(Carga::class);
+    }
+
+    /**
+     * Obtiene todos los albaranes del usuario.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function albaranes(): HasMany
+    {
+        return $this->hasMany(Albaran::class);
+    }
+
+    /**
+     * Obtiene todas las facturas del usuario.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function facturas(): HasMany
+    {
+        return $this->hasMany(Factura::class);
+    }
 }
