@@ -17,7 +17,7 @@
                     </x-jet-nav-link>
                 </div>
 
-                @if (Auth::user()->can('admin'))
+                @if (Auth::user()->hasRole('admin'))
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('usuarios') }}" :active="request()->routeIs('usuarios')">
                         Usuarios
