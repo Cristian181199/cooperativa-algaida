@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Permisos;
+use App\Http\Livewire\Roles;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,4 +29,5 @@ Route::middleware([
     })->name('dashboard');
 
     Route::get('/permisos', Permisos::class)->name('permisos');
+    Route::get('/roles', Roles::class)->name('roles');
 });

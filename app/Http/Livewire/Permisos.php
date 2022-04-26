@@ -20,6 +20,8 @@ class Permisos extends Component
     protected $messages = [
         'name.required' => 'El nombre del permiso no puede estar vacio.',
         'name.min' => 'El nombre del permiso ha de tener minimo 4 caracteres.',
+        'permiso.name.required' => 'El nombre del permiso no puede estar vacio.',
+        'permiso.name.min' => 'El nombre del permiso ha de tener minimo 4 caracteres.',
     ];
 
     protected $listeners = ['render', 'delete'];
