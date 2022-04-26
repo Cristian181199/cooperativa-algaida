@@ -17,6 +17,7 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -42,5 +43,37 @@
         @stack('modals')
 
         @livewireScripts
+
+        <script>
+            Livewire.on('success', function(message1, message2){
+                Swal.fire(
+                    message1,
+                    message2,
+                    'success'
+                )
+            });
+
+            Livewire.on('deletePermiso', permiso => [
+                Swal.fire({
+                    title: 'Estas seguro?',
+                    text: "No podras revertir esta accion!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si, eliminalo!',
+                    cancelButtonText: 'Cancelar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Livewire.emitTo('permisos', 'delete', permiso);
+                            Swal.fire(
+                            'Eliminado!',
+                            'El permiso ha sido eliminado.',
+                            'success'
+                            )
+                        }
+                    })
+            ]);
+        </script>
     </body>
 </html>
