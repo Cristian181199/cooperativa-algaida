@@ -1,0 +1,60 @@
+<x-jet-dialog-modal wire:model="openEdit">
+
+    <x-slot name="title">
+        Editar usuario.
+    </x-slot>
+
+    <x-slot name="content" class="flex flex-col">
+
+        <div class="mt-4">
+            <x-jet-label value="Nombre del usuario" />
+            <x-jet-input type="text" class="w-full" wire:model="user.name" />
+        </div>
+        @error('user.name') <span class="text-red-500 error">{{ $message }}</span> @enderror
+
+        <div class="mt-4">
+            <x-jet-label value="Email del usuario" />
+            <x-jet-input type="text" class="w-full" wire:model="user.email" />
+        </div>
+        @error('user.email') <span class="text-red-500 error">{{ $message }}</span> @enderror
+
+        <div class="mt-4">
+            <x-jet-label value="Contrasenya nueva" />
+            <x-jet-input type="password" class="w-full" wire:model="password" />
+        </div>
+        @error('password') <span class=" text-red-500 error">{{ $message }}</span> @enderror
+
+        <div class="mt-4">
+            <x-jet-label value="Repite la contreasenya" />
+            <x-jet-input type="password" class="w-full" wire:model="password_confirmation" />
+        </div>
+        @error('password_confirmation') <span class="text-red-500 error">{{ $message }}</span> @enderror
+
+        <div class="mt-4">
+            <x-jet-label value="Roles" />
+            <div class="flex">
+                @foreach ($roles as $rol)
+                <x-jet-label value="{{$rol->name}}" class="ml-2 mr-1" />
+                <input wire:model="roles_seleccionados.{{$rol->name}}" value="{{ $rol->name }}" type="checkbox" name="roles_seleccionados" id="roles_seleccionados">
+                        {{--@foreach ($user->roles as $roles2) @if ($roles_seleccionados->contains('name', $roles2->name)) checked @endif @endforeach FUNCIONA, PERO NO APARECEN CHECKED.--}}
+                @endforeach
+            </div>
+        </div>
+        @error('roles_seleccionados') <span class="text-red-500 error">{{ $message }}</span> @enderror
+    </x-slot>
+
+    <x-slot name="footer">
+        <button wire:click="$set('openEdit', false)" class="p-2 pl-5 pr-5 bg-gray-500 text-gray-100 text-lg rounded-full focus:border-4 border-gray-300">
+            Cancelar
+        </button>
+
+        <button wire:click="update" wire:target="update" wire:loading.attr="disabled" class="ml-4 p-2 pl-5 pr-5 bg-green-500 text-gray-100 text-lg rounded-full focus:border-4 border-green-300 disabled:opacity-25">
+            Crear
+        </button>
+
+        <span wire:loading wire:target="update">
+            Cargando...
+        </span>
+    </x-slot>
+
+</x-jet-dialog-modal>
