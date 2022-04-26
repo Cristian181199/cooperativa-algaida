@@ -18,10 +18,10 @@ class Roles extends Component
     ];
 
     protected $messages = [
-        'name.required' => 'El nombre del permiso no puede estar vacio.',
-        'name.min' => 'El nombre del permiso ha de tener minimo 4 caracteres.',
-        'rol.name.required' => 'El nombre del permiso no puede estar vacio.',
-        'rol.name.min' => 'El nombre del permiso ha de tener minimo 4 caracteres.',
+        'name.required' => 'El nombre del rol no puede estar vacio.',
+        'name.min' => 'El nombre del rol ha de tener minimo 4 caracteres.',
+        'rol.name.required' => 'El nombre del rol no puede estar vacio.',
+        'rol.name.min' => 'El nombre del rol ha de tener minimo 4 caracteres.',
     ];
 
     protected $listeners = ['render', 'delete'];

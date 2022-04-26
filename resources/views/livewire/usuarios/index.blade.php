@@ -17,11 +17,11 @@
         @endif
 
         @if ($openCreate)
-            @include('livewire.create-user')
+            @include('livewire.usuarios.create')
         @endif
 
         @if ($openEdit)
-            @include('livewire.edit-user')
+            @include('livewire.usuarios.edit')
         @endif
 
         <div class="flex flex-col">
