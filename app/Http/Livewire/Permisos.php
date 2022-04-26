@@ -45,7 +45,7 @@ class Permisos extends Component
         $this->reset(['openCreate', 'name']);
 
         $this->emitUp('render');
-        $this->emit('success', 'El permiso ha sido creado con exito!');
+        $this->emit('success', 'Permiso creado!' ,'El permiso ha sido creado con exito!');
     }
 
     public function edit(Permission $permiso)
@@ -62,7 +62,7 @@ class Permisos extends Component
 
         $this->reset('openEdit');
 
-        $this->emit('success', 'Permiso editado con exito!');
+        $this->emit('success', 'Permiso editado con exito!',);
     }
 
     public function delete(Permission $permiso)
