@@ -52,7 +52,8 @@
                     'success'
                 )
             });
-
+            // Hay que generalizar esto, no puede ser que cada vez que vaya a borrar tenga que
+            // crear una nueva..
             Livewire.on('deletePermiso', permiso => [
                 Swal.fire({
                     title: 'Estas seguro?',
@@ -69,6 +70,28 @@
                             Swal.fire(
                             'Eliminado!',
                             'El permiso ha sido eliminado.',
+                            'success'
+                            )
+                        }
+                    })
+            ]);
+
+            Livewire.on('deleteRol', rol => [
+                Swal.fire({
+                    title: 'Estas seguro?',
+                    text: "No podras revertir esta accion!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si, eliminalo!',
+                    cancelButtonText: 'Cancelar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Livewire.emitTo('roles', 'delete', rol);
+                            Swal.fire(
+                            'Eliminado!',
+                            'El rol ha sido eliminado.',
                             'success'
                             )
                         }
