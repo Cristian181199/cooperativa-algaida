@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Livewire\Permisos\Permisos;
+use App\Http\Livewire\Permisos;
 use Illuminate\Support\Facades\Route;
 
 /*
