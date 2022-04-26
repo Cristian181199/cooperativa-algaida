@@ -72,4 +72,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Factura::class);
     }
+
+    /**
+     * Obtiene todas las parcelas del usuario.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function parcelas(): HasMany
+    {
+        return $this->hasMany(Parcela::class);
+    }
 }
