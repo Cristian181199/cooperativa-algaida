@@ -29,8 +29,10 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/permisos', Permisos::class)->name('permisos');
-    Route::get('/roles', Roles::class)->name('roles');
-    Route::get('/usuarios', Usuarios::class)->name('usuarios');
+    Route::group(['middleware' => ['role:admin']], function () {
+        Route::get('/permisos', Permisos::class)->name('permisos');
+        Route::get('/roles', Roles::class)->name('roles');
+        Route::get('/usuarios', Usuarios::class)->name('usuarios');
+    });
 
 });
