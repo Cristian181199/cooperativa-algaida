@@ -52,6 +52,28 @@
                     'success'
                 )
             });
+
+            Livewire.on('deletePermiso', permiso => [
+                Swal.fire({
+                    title: 'Estas seguro?',
+                    text: "No podras revertir esta accion!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si, eliminalo!',
+                    cancelButtonText: 'Cancelar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Livewire.emitTo('permisos', 'delete', permiso);
+                            Swal.fire(
+                            'Eliminado!',
+                            'El permiso ha sido eliminado.',
+                            'success'
+                            )
+                        }
+                    })
+            ]);
         </script>
     </body>
 </html>

@@ -62,7 +62,7 @@ class Permisos extends Component
 
         $this->reset('openEdit');
 
-        $this->emit('success', 'Permiso editado con exito!',);
+        $this->emit('success', 'Permiso editado!' ,'Permiso editado con exito!',);
     }
 
     public function delete(Permission $permiso)

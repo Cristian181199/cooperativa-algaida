@@ -17,7 +17,7 @@
         @endif
 
         @if ($openEdit)
-        @include('livewire.permisos.edit-permiso')
+        @include('livewire.permisos.edit')
         @endif
 
         <div class="flex flex-col">
