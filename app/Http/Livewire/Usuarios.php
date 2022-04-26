@@ -30,6 +30,8 @@ class Usuarios extends Component
     protected $messages = [
         '*.required' => 'El campo no puede estar vacio.',
         '*.min' => 'El campo ha de tener minimo 4 caracteres',
+        'user.*.required' => 'El campo no puede estar vacio.',
+        'user.*.min' => 'El campo ha de tener minimo 4 caracteres',
     ];
 
     public function render()
@@ -104,7 +106,7 @@ class Usuarios extends Component
         $this->reset(['openEdit', 'roles_seleccionados', 'password', 'password_confirmation']);
 
         $this->emit('render');
-        $this->emit('alert-edit');
+        $this->emit('success', 'Usuario editado!' ,'El usuario ha sido editado con exito!');
     }
 
     public function delete(User $user)
