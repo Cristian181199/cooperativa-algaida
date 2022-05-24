@@ -1,6 +1,6 @@
 # Cooperativa Algaida
 
-El proyecto consiste en una aplicación web, mediante la cual sé podra gestionar una cooperativa agroalimentaria.
+El proyecto consiste en una aplicación web, mediante la cual sé podrá gestionar una cooperativa agroalimentaria.
 
 
 ## Funcionalidad principal de la aplicación
@@ -61,14 +61,18 @@ Por otra parte, los administradores podrán gestionar todo lo que tenga que ver 
 
 - Invitado: "ver el index".
 
-- Socio: "iniciar sesion", "cerrar sesion", "añadir una parcela", "eliminar una parcela", "modificar una parcela", "modificar la informacion de su perfil", "consultar el precio de las subastas", "consultar las facturas", "consultar los albaranes de subasta". "consultar sus parcelas", "ver las comunicaciones", "ver la grafica de ganacias por mes".
+- Socio: "iniciar sesion", "cerrar sesion", "añadir una parcela", "eliminar una parcela", "modificar una parcela", "modificar la información de su perfil", "consultar el precio de las subastas", "consultar las facturas", "consultar los albaranes de subasta". "consultar sus parcelas", "ver las comunicaciones", "ver la gráfica de ganacias por mes".
 
-- Administrador: "iniciar sesion", "cerrar sesion", "modificar su perfil", "CRUD de socios", "CRUD de parcelas", "CRUD de facturas", "CRUD de subastas", "CRUD de albaranes", "CRUD de comunicaciones", "añadir dias de pago", "eliminar dias de pago".
+- Administrador: "iniciar sesión", "cerrar sesión", "modificar su perfil", "CRUD de socios", "CRUD de parcelas", "CRUD de facturas", "CRUD de subastas", "CRUD de albaranes", "CRUD de comunicaciones", "añadir días de pago", "eliminar días de pago".
 
 # Elemento de innovación
 
-Esta aplicación hará uso de 2 APIS de Google:
+Esta aplicación hará uso de 2 APIS de Google, AWS S3 y laravel livewire:
 
 - API de Google Maps para que el socio pueda registrar la ubicación de su/s parcela/s.
 
 - API de Google calendar para que el socio pueda ver la fecha de pago y no se olvide.
+
+- Guardar imágenes / documentos en la nube de AWS S3.
+
+- Se hace uso de laravel livewire para gestionar la asincronía de la aplicación y la parte de JS.
