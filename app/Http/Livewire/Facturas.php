@@ -25,9 +25,9 @@ class Facturas extends Component
     protected function rules()
     {
         return [
-            'factura.codigo' => 'required|integer|unique:facturas,codigo,' . $this->factura->codigo,
+            'factura.codigo' => 'required|integer|unique:facturas,codigo,' . $this->factura->id,
             'factura.user_id' => 'required|integer|exists:users,id',
-            'suministros_seleccionados' => 'required|exists:suministros,id',
+            'suministros_seleccionados' => 'required',
         ];
     }
 

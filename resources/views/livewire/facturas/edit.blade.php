@@ -34,6 +34,10 @@
             @error('suministros_seleccionados') <span class="error text-red-500">{{ $message }}</span> @enderror
         </div>
 
+        @foreach ($suministros_seleccionados as $sumis)
+            {{$sumis}}
+        @endforeach
+
 
     </x-slot>
 
