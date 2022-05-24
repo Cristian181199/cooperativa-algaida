@@ -49,6 +49,14 @@
                     </div>
                 @endif
 
+                @if (Auth::user()->hasRole('socio'))
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('socio.facturas') }}" :active="request()->routeIs('socio.facturas')">
+                            Mis facturas
+                        </x-jet-nav-link>
+                    </div>
+                @endif
+
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -200,6 +208,14 @@
                 </x-jet-responsive-nav-link>
             </div>
 
+        @endif
+
+        @if (Auth::user()->hasRole('socio'))
+            <div class="pt-2 pb-3 space-y-1">
+                <x-jet-responsive-nav-link href="{{ route('socio.facturas') }}" :active="request()->routeIs('socio.facturas')">
+                    Mis Facturas
+                </x-jet-responsive-nav-link>
+            </div>
         @endif
 
 

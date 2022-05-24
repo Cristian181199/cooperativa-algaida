@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Facturas;
+use App\Http\Livewire\FacturasSocio;
 use App\Http\Livewire\Permisos;
 use App\Http\Livewire\Roles;
 use App\Http\Livewire\Suministros;
@@ -45,5 +46,12 @@ Route::middleware([
         Route::get('/facturas', Facturas::class)->name('facturas');
 
     });
+
+        // Grupo de rutas del rol socio.
+        Route::group(['middleware' => ['role:socio'], 'as' => 'socio.'], function() {
+
+            Route::get('/facturas', FacturasSocio::class)->name('facturas');
+
+        });
 
 });
