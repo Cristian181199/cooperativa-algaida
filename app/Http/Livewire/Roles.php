@@ -34,6 +34,14 @@ class Roles extends Component
         ]);
     }
 
+    // Funcion que cierra el modal que edita los usuarios y
+    // resetea el valor de roles para que no interfiera en el create.
+    public function cerrarModalEdit()
+    {
+        $this->reset('permiso_seleccionados');
+        $this->openEdit = false;
+    }
+
     public function save()
     {
 
@@ -60,6 +68,7 @@ class Roles extends Component
     public function edit(Role $rol)
     {
         $this->rol = $rol;
+        $this->permiso_seleccionados = $rol->permissions()->pluck('id', 'name');
         $this->openEdit = true;
     }
 
