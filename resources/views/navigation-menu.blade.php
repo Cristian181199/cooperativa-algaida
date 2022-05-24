@@ -18,23 +18,29 @@
                 </div>
 
                 @if (Auth::user()->hasRole('admin'))
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('usuarios') }}" :active="request()->routeIs('usuarios')">
-                        Usuarios
-                    </x-jet-nav-link>
-                </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('admin.usuarios') }}" :active="request()->routeIs('admin.usuarios')">
+                            Usuarios
+                        </x-jet-nav-link>
+                    </div>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('roles') }}" :active="request()->routeIs('roles')">
-                        Roles
-                    </x-jet-nav-link>
-                </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('admin.roles') }}" :active="request()->routeIs('admin.roles')">
+                            Roles
+                        </x-jet-nav-link>
+                    </div>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('permisos') }}" :active="request()->routeIs('permisos')">
-                        Permisos
-                    </x-jet-nav-link>
-                </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('admin.permisos') }}" :active="request()->routeIs('admin.permisos')">
+                            Permisos
+                        </x-jet-nav-link>
+                    </div>
+
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('admin.suministros') }}" :active="request()->routeIs('admin.suministros')">
+                            Suministros
+                        </x-jet-nav-link>
+                    </div>
                 @endif
 
             </div>
@@ -163,23 +169,27 @@
             </x-jet-responsive-nav-link>
         </div>
 
-        <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('usuarios') }}" :active="request()->routeIs('usuarios')">
-                Usuarios
-            </x-jet-responsive-nav-link>
-        </div>
+        @if (Auth::user()->hasRole('admin'))
+            <div class="pt-2 pb-3 space-y-1">
+                <x-jet-responsive-nav-link href="{{ route('admin.usuarios') }}" :active="request()->routeIs('admin.usuarios')">
+                    Usuarios
+                </x-jet-responsive-nav-link>
+            </div>
 
-        <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('roles') }}" :active="request()->routeIs('roles')">
-                Roles
-            </x-jet-responsive-nav-link>
-        </div>
+            <div class="pt-2 pb-3 space-y-1">
+                <x-jet-responsive-nav-link href="{{ route('admin.roles') }}" :active="request()->routeIs('admin.roles')">
+                    Roles
+                </x-jet-responsive-nav-link>
+            </div>
 
-        <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('permisos') }}" :active="request()->routeIs('permisos')">
-                Permisos
-            </x-jet-responsive-nav-link>
-        </div>
+            <div class="pt-2 pb-3 space-y-1">
+                <x-jet-responsive-nav-link href="{{ route('admin.permisos') }}" :active="request()->routeIs('admin.permisos')">
+                    Permisos
+                </x-jet-responsive-nav-link>
+            </div>
+
+        @endif
+
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">

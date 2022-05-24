@@ -2,6 +2,7 @@
 
 use App\Http\Livewire\Permisos;
 use App\Http\Livewire\Roles;
+use App\Http\Livewire\Suministros;
 use App\Http\Livewire\Usuarios;
 use Illuminate\Support\Facades\Route;
 
@@ -29,10 +30,18 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    Route::group(['middleware' => ['role:admin']], function () {
-        Route::get('/permisos', Permisos::class)->name('permisos');
-        Route::get('/roles', Roles::class)->name('roles');
+    // Grupo de rutas del rol admin.
+    Route::group([
+        'middleware' => ['role:admin'],
+        'prefix' => 'admin',
+        'as' => 'admin.'
+        ], function() {
+
         Route::get('/usuarios', Usuarios::class)->name('usuarios');
+        Route::get('/roles', Roles::class)->name('roles');
+        Route::get('/permisos', Permisos::class)->name('permisos');
+        Route::get('/suministros', Suministros::class)->name('suministros');
+
     });
 
 });
