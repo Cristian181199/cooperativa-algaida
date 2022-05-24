@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Facturas;
 use App\Http\Livewire\Permisos;
 use App\Http\Livewire\Roles;
 use App\Http\Livewire\Suministros;
@@ -41,6 +42,7 @@ Route::middleware([
         Route::get('/roles', Roles::class)->name('roles');
         Route::get('/permisos', Permisos::class)->name('permisos');
         Route::get('/suministros', Suministros::class)->name('suministros');
+        Route::get('/facturas', Facturas::class)->name('facturas');
 
     });
 
