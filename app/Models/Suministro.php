@@ -11,6 +11,18 @@ class Suministro extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'codigo',
+        'denominacion',
+        'precio',
+        'imagen',
+    ];
+
+    /**
      * The facturas that belong to the Suministro
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

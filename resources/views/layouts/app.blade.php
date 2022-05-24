@@ -119,6 +119,30 @@
                         }
                     })
             ]);
+
+            Livewire.on('deleteSuministro', suministro => [
+                Swal.fire({
+                    title: 'Estas seguro?',
+                    text: "No podras revertir esta accion!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si, eliminalo!',
+                    cancelButtonText: 'Cancelar'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        Livewire.emitTo('suministros', 'delete', suministro);
+
+                        Swal.fire(
+                        'Eliminado!',
+                        'El suministro ha sido eliminado.',
+                        'success'
+                        )
+                    }
+                    })
+            ] );
         </script>
     </body>
 </html>

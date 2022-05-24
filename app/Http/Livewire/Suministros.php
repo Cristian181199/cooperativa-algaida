@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Suministro;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Suministros extends Component
 {
@@ -10,7 +12,7 @@ class Suministros extends Component
 
     public $openCreate = false;
     public $openEdit = false;
-    public $openShow = false; //Falta el show
+    public $openShow = false;
 
     public $codigo, $denominacion, $precio, $imagen, $imagen_nueva;
 
@@ -34,6 +36,12 @@ class Suministros extends Component
             'suministro.precio' => 'required|numeric',
             'imagen_nueva' => 'nullable|sometimes|image|mimes:png,jpg|max:2048',
         ];
+    }
+
+    public function show(Suministro $suministro)
+    {
+        $this->openShow = true;
+        $this->suministro = $suministro;
     }
 
     public function save()
