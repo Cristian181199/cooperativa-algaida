@@ -12,11 +12,22 @@ class Factura extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'user_id',
+        'codigo',
+    ];
+
+
+    /**
      * Obtiene el usuario al que pertenece la factura.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function usuario(): BelongsTo
+    public function user(): BelongsTo // Asi cumple las reglas de laravel.
     {
         return $this->belongsTo(User::class);
     }
