@@ -34,9 +34,8 @@
             <x-jet-label value="Roles" />
             <div class="flex">
                 @foreach ($roles as $rol)
-                <x-jet-label value="{{$rol->name}}" class="ml-2 mr-1" />
-                <input wire:model="roles_seleccionados.{{$rol->name}}" value="{{ $rol->name }}" type="checkbox" name="roles_seleccionados" id="roles_seleccionados">
-                        {{--@foreach ($user->roles as $roles2) @if ($roles_seleccionados->contains('name', $roles2->name)) checked @endif @endforeach FUNCIONA, PERO NO APARECEN CHECKED.--}}
+                    <x-jet-label value="{{$rol->name}}" class="ml-2 mr-1" />
+                    <input wire:model="roles_seleccionados.{{$rol->name}}" value="{{ $rol->name }}" type="checkbox" name="roles_seleccionados" id="roles_seleccionados">
                 @endforeach
             </div>
         </div>
@@ -44,7 +43,7 @@
     </x-slot>
 
     <x-slot name="footer">
-        <button wire:click="$set('openEdit', false)" class="p-2 pl-5 pr-5 bg-gray-500 text-gray-100 text-lg rounded-full focus:border-4 border-gray-300">
+        <button wire:click="cerrarModalEdit" class="p-2 pl-5 pr-5 bg-gray-500 text-gray-100 text-lg rounded-full focus:border-4 border-gray-300">
             Cancelar
         </button>
 

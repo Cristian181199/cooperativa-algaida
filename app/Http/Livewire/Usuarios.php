@@ -42,6 +42,14 @@ class Usuarios extends Component
         ]);
     }
 
+    // Funcion que cierra el modal que edita los usuarios y
+    // resetea el valor de roles para que no interfiera en el create.
+    public function cerrarModalEdit()
+    {
+        $this->reset('roles_seleccionados');
+        $this->openEdit = false;
+    }
+
     public function show(User $user)
     {
         $this->openShow = true;
@@ -79,6 +87,7 @@ class Usuarios extends Component
     public function edit(User $user)
     {
         $this->user = $user;
+        $this->roles_seleccionados = $user->roles()->pluck('id', 'name');
         $this->openEdit = true;
     }
 
