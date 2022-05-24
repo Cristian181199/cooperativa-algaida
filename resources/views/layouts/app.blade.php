@@ -142,7 +142,31 @@
                         )
                     }
                     })
-            ] );
+            ]);
+
+            Livewire.on('deleteFactura', factura => [
+                Swal.fire({
+                    title: 'Estas seguro?',
+                    text: "No podras revertir esta accion!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si, eliminalo!',
+                    cancelButtonText: 'Cancelar'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        Livewire.emitTo('facturas', 'delete', factura);
+
+                        Swal.fire(
+                        'Eliminado!',
+                        'La factura ha sido eliminada.',
+                        'success'
+                        )
+                    }
+                    })
+            ]);
         </script>
     </body>
 </html>

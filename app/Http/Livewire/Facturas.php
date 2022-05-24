@@ -96,4 +96,11 @@ class Facturas extends Component
         $this->emit('render');
         $this->emit('success', 'Factura editada!' ,'La factura ha sido editada con exito!');
     }
+
+    public function delete(Factura $factura)
+    {
+        // Borramos de la tabla pivote y luego la factura.
+        $factura->suministros()->detach();
+        $factura->delete();
+    }
 }
