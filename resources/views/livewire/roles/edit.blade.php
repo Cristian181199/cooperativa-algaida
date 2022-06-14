@@ -1,4 +1,4 @@
-<x-jet-dialog-modal wire:model="openEdit">
+<x-dialog-modal wire:model="openEdit">
 
     <x-slot name="title">
         Editar rol.
@@ -7,16 +7,16 @@
     <x-slot name="content">
 
         <div class="mb-4">
-            <x-jet-label value="Nombre del rol" />
-            <x-jet-input type="text" class="w-full" wire:model="rol.name" />
+            <x-label value="Nombre del rol" />
+            <x-input type="text" class="w-full" wire:model="rol.name" />
             @error('rol.name') <span class="text-red-500 error">{{ $message }}</span> @enderror
         </div>
 
         <div class="mt-4">
-            <x-jet-label value="Permisos" />
+            <x-label value="Permisos" />
             <div class="flex">
                 @foreach ($permisos as $permiso)
-                    <x-jet-label value="{{$permiso->name}}" class="ml-2 mr-1" />
+                    <x-label value="{{$permiso->name}}" class="ml-2 mr-1" />
                     <input wire:model="permiso_seleccionados.{{$permiso->name}}" value="{{ $permiso->name }}" type="checkbox" name="permiso_seleccionados" id="permiso_seleccionados">
                 @endforeach
             </div>
@@ -39,4 +39,4 @@
         </span>
     </x-slot>
 
-</x-jet-dialog-modal>
+</x-dialog-modal>

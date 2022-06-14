@@ -1,4 +1,4 @@
-<x-jet-dialog-modal wire:model="openCreate">
+<x-dialog-modal wire:model="openCreate">
 
     <x-slot name="title">
         Crear usuario nuevo.
@@ -7,34 +7,34 @@
     <x-slot name="content">
 
         <div class="mb-4">
-            <x-jet-label value="Nombre del usuario" />
-            <x-jet-input type="text" class="w-full" wire:model="name" />
+            <x-label value="Nombre del usuario" />
+            <x-input type="text" class="w-full" wire:model="name" />
             @error('name') <span class="text-red-500 error">{{ $message }}</span> @enderror
         </div>
 
         <div class="mb-4">
-            <x-jet-label value="Email del usuario" />
-            <x-jet-input type="text" class="w-full" wire:model="email" />
+            <x-label value="Email del usuario" />
+            <x-input type="text" class="w-full" wire:model="email" />
             @error('email') <span class="text-red-500 error">{{ $message }}</span> @enderror
         </div>
 
         <div class="mb-4">
-            <x-jet-label value="Contrasenya del usuario" />
-            <x-jet-input type="password" class="w-full" name="password" wire:model="password" />
+            <x-label value="Contrasenya del usuario" />
+            <x-input type="password" class="w-full" name="password" wire:model="password" />
             @error('password') <span class="text-red-500 error">{{ $message }}</span> @enderror
         </div>
 
         <div class="mb-4">
-            <x-jet-label value="Repite la contrasenya del usuario" />
-            <x-jet-input type="password" class="w-full" name="password_confirmation" wire:model="password_confirmation" />
+            <x-label value="Repite la contrasenya del usuario" />
+            <x-input type="password" class="w-full" name="password_confirmation" wire:model="password_confirmation" />
             @error('password_confirmation') <span class="text-red-500 error">{{ $message }}</span> @enderror
         </div>
 
         <div class="mt-4">
-            <x-jet-label value="Roles" />
+            <x-label value="Roles" />
             <div class="flex">
                 @foreach ($roles as $rol)
-                <x-jet-label value="{{$rol->name}}" class="ml-2 mr-1" />
+                <x-label value="{{$rol->name}}" class="ml-2 mr-1" />
                 <input wire:model="roles_seleccionados.{{$rol->name}}" value="{{ $rol->name }}" type="checkbox" name="roles_seleccionados" id="roles_seleccionados">
                 @endforeach
             </div>
@@ -57,4 +57,4 @@
         </span>
     </x-slot>
 
-</x-jet-dialog-modal>
+</x-dialog-modal>

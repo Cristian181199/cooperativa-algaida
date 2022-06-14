@@ -1,4 +1,4 @@
-<x-jet-dialog-modal wire:model="openEdit">
+<x-dialog-modal wire:model="openEdit">
 
     <x-slot name="title">
         Editar suministro.
@@ -7,31 +7,31 @@
     <x-slot name="content">
 
         <div class="mb-4">
-            <x-jet-label value="Codigo" />
-            <x-jet-input type="text" class="w-full" wire:model="suministro.codigo" />
+            <x-label value="Codigo" />
+            <x-input type="text" class="w-full" wire:model="suministro.codigo" />
             @error('suministro.codigo') <span class="text-red-500 error">{{ $message }}</span> @enderror
         </div>
 
         <div class="mb-4">
-            <x-jet-label value="Denominacion del suministro" />
-            <x-jet-input type="text" class="w-full" wire:model="suministro.denominacion" />
+            <x-label value="Denominacion del suministro" />
+            <x-input type="text" class="w-full" wire:model="suministro.denominacion" />
             @error('suministro.denominacion') <span class="text-red-500 error">{{ $message }}</span> @enderror
         </div>
 
         <div class="mb-4">
-            <x-jet-label value="Precio" />
-            <x-jet-input type="text" class="w-full" wire:model="suministro.precio" />
+            <x-label value="Precio" />
+            <x-input type="text" class="w-full" wire:model="suministro.precio" />
             @error('suministro.precio') <span class="text-red-500 error">{{ $message }}</span> @enderror
         </div>
 
         <div class="mb-4">
-            <x-jet-label value="Imagen actual del suministro" />
+            <x-label value="Imagen actual del suministro" />
             <img src="{{ Storage::disk('s3')->url($suministro->imagen)}}" alt="{{ $suministro->denominacion }}">
         </div>
 
         <div class="mb-4">
-            <x-jet-label value="Imagen nueva del suministro" />
-            <x-jet-input type="file" class="w-full" wire:model="imagen_nueva" />
+            <x-label value="Imagen nueva del suministro" />
+            <x-input type="file" class="w-full" wire:model="imagen_nueva" />
             @error('imagen_nueva') <span class="text-red-500 error">{{ $message }}</span> @enderror
         </div>
 
@@ -58,4 +58,4 @@
         </button>
     </x-slot>
 
-</x-jet-dialog-modal>
+</x-dialog-modal>

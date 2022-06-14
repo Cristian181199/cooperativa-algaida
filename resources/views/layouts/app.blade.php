@@ -1,172 +1,72 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+    <title>{{ config('app.name', 'K UI') }}</title>
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+    <!-- Styles -->
+    <!-- Styles -->
+    <style>
+        [x-cloak] {
+            display: none;
+        }
+    </style>
 
-        @livewireStyles
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
-        <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    </head>
-    <body class="font-sans antialiased">
-        <x-jet-banner />
+    @livewireStyles
 
-        <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-menu')
+    <!-- Scripts -->
+    <script src="{{ mix('js/app.js') }}" defer></script>
+</head>
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+<body class="font-sans antialiased">
+    
+    <div x-data="mainState" :class="{ dark: isDarkMode }" @resize.window="handleWindowResize" x-cloak>
+        <x-banner />
+        
+        <div class="min-h-screen text-gray-900 bg-gray-100 dark:bg-dark-eval-0 dark:text-gray-200">
+            <!-- Sidebar -->
+            <x-sidebar.sidebar />
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+            <!-- Page Wrapper -->
+            <div class="flex flex-col min-h-screen" :class="{ 
+                    'lg:ml-64': isSidebarOpen,
+                    'md:ml-16': !isSidebarOpen
+                }" style="transition-property: margin; transition-duration: 150ms;">
+
+                @livewire('navigation-menu')
+
+                <!-- Page Heading -->
+                @if (isset($header))
+                    <header>
+                        <div class="p-4 sm:p-6">
+                            {{ $header }}
+                        </div>
+                    </header>
+                @endif
+
+                <!-- Page Content -->
+                <main class="flex-1 px-4 sm:px-6">
+                    {{ $slot }}
+                </main>
+
+                <!-- Page Footer -->
+                <x-footer />
+            </div>
         </div>
+    </div>
+    @stack('modals')
 
-        @stack('modals')
+    @livewireScripts
+</body>
 
-        @livewireScripts
-
-        <script>
-            Livewire.on('success', function(message1, message2){
-                Swal.fire(
-                    message1,
-                    message2,
-                    'success'
-                )
-            });
-            // Hay que generalizar esto, no puede ser que cada vez que vaya a borrar tenga que
-            // crear una nueva..
-            Livewire.on('deletePermiso', permiso => [
-                Swal.fire({
-                    title: 'Estas seguro?',
-                    text: "No podras revertir esta accion!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Si, eliminalo!',
-                    cancelButtonText: 'Cancelar'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            Livewire.emitTo('permisos', 'delete', permiso);
-                            Swal.fire(
-                            'Eliminado!',
-                            'El permiso ha sido eliminado.',
-                            'success'
-                            )
-                        }
-                    })
-            ]);
-
-            Livewire.on('deleteRol', rol => [
-                Swal.fire({
-                    title: 'Estas seguro?',
-                    text: "No podras revertir esta accion!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Si, eliminalo!',
-                    cancelButtonText: 'Cancelar'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            Livewire.emitTo('roles', 'delete', rol);
-                            Swal.fire(
-                            'Eliminado!',
-                            'El rol ha sido eliminado.',
-                            'success'
-                            )
-                        }
-                    })
-            ]);
-
-            Livewire.on('deleteUser', user => [
-                Swal.fire({
-                    title: 'Estas seguro?',
-                    text: "No podras revertir esta accion!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Si, eliminalo!',
-                    cancelButtonText: 'Cancelar'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            Livewire.emitTo('usuarios', 'delete', user);
-                            Swal.fire(
-                            'Eliminado!',
-                            'El usuario ha sido eliminado.',
-                            'success'
-                            )
-                        }
-                    })
-            ]);
-
-            Livewire.on('deleteSuministro', suministro => [
-                Swal.fire({
-                    title: 'Estas seguro?',
-                    text: "No podras revertir esta accion!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Si, eliminalo!',
-                    cancelButtonText: 'Cancelar'
-                    }).then((result) => {
-                    if (result.isConfirmed) {
-
-                        Livewire.emitTo('suministros', 'delete', suministro);
-
-                        Swal.fire(
-                        'Eliminado!',
-                        'El suministro ha sido eliminado.',
-                        'success'
-                        )
-                    }
-                    })
-            ]);
-
-            Livewire.on('deleteFactura', factura => [
-                Swal.fire({
-                    title: 'Estas seguro?',
-                    text: "No podras revertir esta accion!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Si, eliminalo!',
-                    cancelButtonText: 'Cancelar'
-                    }).then((result) => {
-                    if (result.isConfirmed) {
-
-                        Livewire.emitTo('facturas', 'delete', factura);
-
-                        Swal.fire(
-                        'Eliminado!',
-                        'La factura ha sido eliminada.',
-                        'success'
-                        )
-                    }
-                    })
-            ]);
-        </script>
-    </body>
 </html>

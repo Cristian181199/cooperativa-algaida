@@ -1,4 +1,4 @@
-<x-jet-dialog-modal wire:model="openCreate">
+<x-dialog-modal wire:model="openCreate">
 
     <x-slot name="title">
         Crear un rol nuevo.
@@ -7,17 +7,17 @@
     <x-slot name="content">
 
         <div class="mb-4">
-            <x-jet-label value="Nombre del rol" />
-            <x-jet-input type="text" class="w-full" wire:model="name" />
+            <x-label value="Nombre del rol" />
+            <x-input type="text" class="w-full" wire:model="name" />
             @error('name') <span class="error text-red-500">{{ $message }}</span> @enderror
         </div>
 
         <div class="mt-4">
             {{-- Hay que arreglar que cuando se crean muchos permisos, no se ven en la pantalla, se corta. --}}
-            <x-jet-label value="Permisos" />
+            <x-label value="Permisos" />
             <div class="flex">
                 @foreach ($permisos as $permiso)
-                <x-jet-label value="{{$permiso->name}}" class="ml-2 mr-1" />
+                <x-label value="{{$permiso->name}}" class="ml-2 mr-1" />
                 <input wire:model="permiso_seleccionados.{{$permiso->name}}" value="{{ $permiso->name }}" type="checkbox" name="permiso_seleccionados" id="permiso_seleccionados">
                 @endforeach
             </div>
@@ -40,4 +40,4 @@
         </span>
     </x-slot>
 
-</x-jet-dialog-modal>
+</x-dialog-modal>
