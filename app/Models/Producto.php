@@ -12,6 +12,16 @@ class Producto extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'denominacion',
+        'imagen',
+    ];
+
+    /**
      * Obtiene la clase a la que pertenece el producto.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

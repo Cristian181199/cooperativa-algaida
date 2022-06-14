@@ -3,6 +3,7 @@
 use App\Http\Livewire\Facturas;
 use App\Http\Livewire\FacturasSocio;
 use App\Http\Livewire\Permisos;
+use App\Http\Livewire\Productos;
 use App\Http\Livewire\Roles;
 use App\Http\Livewire\Suministros;
 use App\Http\Livewire\Usuarios;
@@ -44,6 +45,7 @@ Route::middleware([
         Route::get('/permisos', Permisos::class)->name('permisos');
         Route::get('/suministros', Suministros::class)->name('suministros');
         Route::get('/facturas', Facturas::class)->name('facturas');
+        Route::get('/productos', Productos::class)->name('productos');
 
     });
 
