@@ -35,7 +35,7 @@
 
                             <div class="relative z-0 mt-1 border border-gray-200 rounded-lg cursor-pointer dark:border-gray-600">
                                 @foreach ($this->roles as $index => $role)
-                                    <button type="button" class="relative px-4 py-3 inline-flex w-full rounded-lg focus:z-10 focus:outline-none focus:border-purple-500 focus:ring focus:ring-purple-500 {{ $index > 0 ? 'border-t border-gray-200 dark:border-gray-600 rounded-t-none' : '' }} {{ ! $loop->last ? 'rounded-b-none' : '' }}"
+                                    <button type="button" class="relative px-4 py-3 inline-flex w-full rounded-lg focus:z-10 focus:outline-none focus:border-green-500 focus:ring focus:ring-green-500 {{ $index > 0 ? 'border-t border-gray-200 dark:border-gray-600 rounded-t-none' : '' }} {{ ! $loop->last ? 'rounded-b-none' : '' }}"
                                                     wire:click="$set('addTeamMemberForm.role', '{{ $role->key }}')">
                                         <div class="{{ isset($addTeamMemberForm['role']) && $addTeamMemberForm['role'] !== $role->key ? 'opacity-70' : '' }}">
                                             <!-- Role Name -->
@@ -177,7 +177,7 @@
         <x-slot name="content">
             <div class="relative z-0 mt-1 border border-gray-200 rounded-lg cursor-pointer dark:border-gray-500">
                 @foreach ($this->roles as $index => $role)
-                    <button type="button" class="relative px-4 py-3 inline-flex w-full rounded-lg focus:z-10 focus:outline-none focus:border-purple-500 focus:ring focus:ring-purple-500 {{ $index > 0 ? 'border-t border-gray-200 rounded-t-none' : '' }} {{ ! $loop->last ? 'rounded-b-none' : '' }}"
+                    <button type="button" class="relative px-4 py-3 inline-flex w-full rounded-lg focus:z-10 focus:outline-none focus:border-green-500 focus:ring focus:ring-green-500 {{ $index > 0 ? 'border-t border-gray-200 rounded-t-none' : '' }} {{ ! $loop->last ? 'rounded-b-none' : '' }}"
                                     wire:click="$set('currentRole', '{{ $role->key }}')">
                         <div class="{{ $currentRole !== $role->key ? 'opacity-75' : '' }}">
                             <!-- Role Name -->

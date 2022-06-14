@@ -1,5 +1,5 @@
 <div>
-    <nav aria-label="secondary" x-data="{ open: false }" 
+    <nav aria-label="secondary" x-data="{ open: false }"
         class="sticky top-0 z-10 flex items-center justify-between px-4 py-4 sm:px-6 transition-transform duration-500 bg-white dark:bg-dark-eval-1"
         :class="{
             '-translate-y-full': scrollingDown,
@@ -27,7 +27,7 @@
                 <x-dropdown align="right" width="60">
                     <x-slot name="trigger">
                         <span class="inline-flex rounded-md">
-                            <button type="button" class="flex items-center p-2 text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none focus:ring focus:ring-purple-500 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark-eval-1 dark:text-gray-400 dark:hover:text-gray-200">
+                            <button type="button" class="flex items-center p-2 text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none focus:ring focus:ring-green-500 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark-eval-1 dark:text-gray-400 dark:hover:text-gray-200">
                                 {{ Auth::user()->currentTeam->name }}
 
                                 <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -74,14 +74,14 @@
             <x-dropdown align="right" width="48">
                 <x-slot name="trigger">
                     @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                        <button class="flex text-sm border-2 border-transparent rounded-md transition focus:outline-none focus:ring focus:ring-purple-500 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark-eval-1">
+                        <button class="flex text-sm border-2 border-transparent rounded-md transition focus:outline-none focus:ring focus:ring-green-500 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark-eval-1">
                             <img class="h-8 w-8 rounded-md object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                         </button>
                     @else
                         <button
-                            class="flex items-center p-2 text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none focus:ring focus:ring-purple-500 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark-eval-1 dark:text-gray-400 dark:hover:text-gray-200">
+                            class="flex items-center p-2 text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none focus:ring focus:ring-green-500 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark-eval-1 dark:text-gray-400 dark:hover:text-gray-200">
                             <div>{{ Auth::user()->name }}</div>
-        
+
                             <div class="ml-1">
                                 <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
@@ -114,7 +114,7 @@
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-    
+
                         <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                             this.closest('form').submit();">
                             {{ __('Log Out') }}
@@ -127,7 +127,7 @@
         <!-- Primary Navigation Menu -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" x-show="false">
             <div class="flex justify-between h-16">
-                
+
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
                     <!-- Teams Dropdown -->
                     @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
@@ -179,7 +179,7 @@
                         </div>
                     @endif
 
-                   
+
                 </div>
 
                 <!-- Hamburger -->
