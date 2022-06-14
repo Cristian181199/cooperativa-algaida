@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight">
-            {{ __('Profile Settings') }}
+            {{ __('Configuracion del perfil') }}
         </h2>
     </x-slot>
 
@@ -15,7 +15,7 @@
                         :class="{
                             'bg-green-500 text-white hover:text-white dark:text-white dark:hover:text-white': selectedTab == 'profileSetteings',
                         }">
-                        {{ __('Profile Settings') }}
+                        {{ __('Configuracion del perfil') }}
                     </button>
                 @endif
 
@@ -26,7 +26,7 @@
                         :class="{
                             'bg-green-500 text-white hover:text-white dark:text-white dark:hover:text-white': selectedTab == 'updatePassword',
                         }">
-                        {{ __('Update Password') }}
+                        {{ __('Actualizar contraseña') }}
                     </button>
                 @endif
 
@@ -37,7 +37,7 @@
                         :class="{
                             'bg-green-500 text-white hover:text-white dark:text-white dark:hover:text-white': selectedTab == 'twoFactorAuth',
                         }">
-                        {{ __('Two Factor Authentication') }}
+                        {{ __('Autenticación de dos factores') }}
                     </button>
                 @endif
 
@@ -47,7 +47,7 @@
                     :class="{
                         'bg-green-500 text-white hover:text-white dark:text-white dark:hover:text-white': selectedTab == 'browserSessions',
                     }">
-                    {{ __('Browser Sessions') }}
+                    {{ __('Sesiones del navegador') }}
                 </button>
 
                 @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
@@ -57,7 +57,7 @@
                             :class="{
                                 'bg-green-500 text-white hover:text-white dark:text-white dark:hover:text-white': selectedTab == 'deleteProfiles',
                             }">
-                            {{ __('Delete Account') }}
+                            {{ __('Borrar Cuenta') }}
                         </button>
                     @endif
             </div>

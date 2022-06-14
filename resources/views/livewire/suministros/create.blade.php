@@ -1,4 +1,4 @@
-<x-jet-dialog-modal wire:model="openCreate">
+<x-dialog-modal wire:model="openCreate">
 
     <x-slot name="title">
         Crear suministro nuevo.
@@ -7,26 +7,26 @@
     <x-slot name="content">
 
         <div class="mb-4">
-            <x-jet-label value="Codigo" />
-            <x-jet-input type="text" class="w-full" wire:model="codigo" />
+            <x-label value="Codigo" />
+            <x-input type="text" class="w-full" wire:model="codigo" />
             @error('codigo') <span class="text-red-500 error">{{ $message }}</span> @enderror
         </div>
 
         <div class="mb-4">
-            <x-jet-label value="Denominacion del suministro" />
-            <x-jet-input type="text" class="w-full" wire:model="denominacion" />
+            <x-label value="Denominacion del suministro" />
+            <x-input type="text" class="w-full" wire:model="denominacion" />
             @error('denominacion') <span class="text-red-500 error">{{ $message }}</span> @enderror
         </div>
 
         <div class="mb-4">
-            <x-jet-label value="Precio" />
-            <x-jet-input type="text" class="w-full" wire:model="precio" />
+            <x-label value="Precio" />
+            <x-input type="text" class="w-full" wire:model="precio" />
             @error('precio') <span class="text-red-500 error">{{ $message }}</span> @enderror
         </div>
 
         <div class="mb-4">
-            <x-jet-label value="Imagen del suministro" />
-            <x-jet-input type="file" class="w-full" wire:model="imagen" />
+            <x-label value="Imagen del suministro" />
+            <x-input type="file" class="w-full" wire:model="imagen" />
             @error('imagen') <span class="text-red-500 error">{{ $message }}</span> @enderror
         </div>
 
@@ -57,4 +57,4 @@
         </span>
     </x-slot>
 
-</x-jet-dialog-modal>
+</x-dialog-modal>

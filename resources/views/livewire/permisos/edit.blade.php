@@ -1,4 +1,4 @@
-<x-jet-dialog-modal wire:model="openEdit">
+<x-dialog-modal wire:model="openEdit">
 
     <x-slot name="title">
         Editar permiso.
@@ -7,8 +7,8 @@
     <x-slot name="content">
 
         <div class="mb-4">
-            <x-jet-label value="Nombre del rol" />
-            <x-jet-input type="text" class="w-full" wire:model="permiso.name" />
+            <x-label value="Nombre del rol" />
+            <x-input type="text" class="w-full" wire:model="permiso.name" />
             @error('permiso.name') <span class="text-red-500 error">{{ $message }}</span> @enderror
         </div>
 
@@ -28,4 +28,4 @@
         </span>
     </x-slot>
 
-</x-jet-dialog-modal>
+</x-dialog-modal>

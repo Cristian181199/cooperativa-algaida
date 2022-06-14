@@ -1,4 +1,4 @@
-<x-jet-dialog-modal wire:model="openCreate">
+<x-dialog-modal wire:model="openCreate">
 
     <x-slot name="title">
         Crear un permiso nuevo.
@@ -7,8 +7,8 @@
     <x-slot name="content">
 
         <div class="mb-4">
-            <x-jet-label value="Nombre del permiso" />
-            <x-jet-input type="text" class="w-full" wire:model="name" />
+            <x-label value="Nombre del permiso" />
+            <x-input type="text" class="w-full" wire:model="name" />
             @error('name') <span class="error text-red-500">{{ $message }}</span> @enderror
         </div>
 
@@ -28,4 +28,4 @@
         </span>
     </x-slot>
 
-</x-jet-dialog-modal>
+</x-dialog-modal>

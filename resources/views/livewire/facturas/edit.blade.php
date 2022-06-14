@@ -1,4 +1,4 @@
-<x-jet-dialog-modal wire:model="openEdit">
+<x-dialog-modal wire:model="openEdit">
 
     <x-slot name="title">
         Editar factura.
@@ -7,14 +7,16 @@
     <x-slot name="content">
 
         <div class="mb-4">
-            <x-jet-label value="Codigo de la factura" />
-            <x-jet-input type="text" class="w-full" wire:model="factura.codigo" />
+            <x-label value="Codigo de la factura" />
+            <x-input type="text" class="w-full" wire:model="factura.codigo" />
             @error('factura.codigo') <span class="error text-red-500">{{ $message }}</span> @enderror
         </div>
 
         <div class="mb-4">
-            <x-jet-label value="Usuario al que va la factura"/>
-            <select wire:model="factura.user_id" name="usuario" id="usuario" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+            <x-label value="Usuario al que va la factura"/>
+            <select wire:model="factura.user_id" name="usuario" id="usuario" class="py-2 border-gray-400 rounded-md focus:border-gray-400 focus:ring
+            focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
+            dark:text-gray-300 dark:focus:ring-offset-dark-eval-1">
                 <option disabled selected> Selecciona un usuario... </option>
                 @foreach ($usuarios as $usuario)
                     <option value="{{$usuario->id}}"> {{ $usuario->name }} </option>
@@ -27,16 +29,12 @@
             <h3>Suministros</h3>
             @foreach ($suministros as $suministro)
             <div class="flex">
-                <x-jet-label value="{{$suministro->denominacion}}" class="ml-2 mr-1"/>
+                <x-label value="{{$suministro->denominacion}}" class="ml-2 mr-1"/>
                 <input wire:model="suministros_seleccionados.{{$suministro->denominacion}}" value="{{ $suministro->id }}" type="checkbox" name="suministros_seleccionados" id="suministros_seleccionados">
             </div>
             @endforeach
             @error('suministros_seleccionados') <span class="error text-red-500">{{ $message }}</span> @enderror
         </div>
-
-        @foreach ($suministros_seleccionados as $sumis)
-            {{$sumis}}
-        @endforeach
 
 
     </x-slot>
@@ -51,4 +49,4 @@
         </button>
     </x-slot>
 
-</x-jet-dialog-modal>
+</x-dialog-modal>

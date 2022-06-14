@@ -1,4 +1,4 @@
-<x-jet-dialog-modal wire:model="openShow">
+<x-dialog-modal wire:model="openShow">
 
     <x-slot name="title">
         <h1 class="text-2xl">Datos del suministro:</h1>
@@ -6,7 +6,7 @@
 
     <x-slot name="content">
 
-        <div class="bg-white rounded-md max-w-4xl mx-auto p-4 space-y-4 shadow-lg">
+        <div class="bg-white dark:bg-dark-eval-1 rounded-md max-w-4xl mx-auto p-4 space-y-4 shadow-lg">
         <h3 class=" mb-2 pt-3 font-semibold">Denominacion: <span class="font-thin">{{ $suministro->denominacion }}</span></p>
         <h3 class="border-t mb-2 pt-3 font-semibold">Precio: <span class="font-thin">{{ $suministro->precio }}</span></p>
         <h3 class="border-t mb-2 pt-3 font-semibold">Imagen:
@@ -23,4 +23,4 @@
         </button>
     </x-slot>
 
-</x-jet-dialog-modal>
+</x-dialog-modal>
