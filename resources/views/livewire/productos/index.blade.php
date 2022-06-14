@@ -1,6 +1,6 @@
 <div>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             Lista de productos
         </h2>
     </x-slot>
@@ -35,9 +35,6 @@
                                     Denominacion
                                 </th>
                                 <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Clase
-                                </th>
-                                <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Imagen
                                 </th>
                                 <th scope="col" width="200" class="px-6 py-3 bg-gray-50">
@@ -54,10 +51,6 @@
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                        {{ $producto->clase }}
-                                    </td>
-
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                         <img class="w-10 h-10 rounded-full"
                                                 src="{{ Storage::disk('s3')->url($producto->imagen)}}"
                                                 alt="{{ $producto->denominacion }}" />
@@ -65,7 +58,6 @@
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium flex">
-                                        <a wire:click="show({{$producto}})" class="cursor-pointer mb-2 mr-2 inline-flex bg-blue-500 hover:bg-blue-700 text-white rounded-full h-6 px-3 justify-center items-center">Ver</a>
                                         <a wire:click="edit({{$producto}})" class="cursor-pointer mb-2 mr-2 inline-flex bg-indigo-500 hover:bg-indigo-700 text-white rounded-full h-6 px-3 justify-center items-center">Editar</a>
                                         <a wire:click="$emit('deleteProducto', {{$producto}})" class="cursor-pointer mb-2 mr-2 inline-flex bg-red-500 hover:bg-red-700 text-white rounded-full h-6 px-3 justify-center items-center">Eliminar</a>
                                     </td>

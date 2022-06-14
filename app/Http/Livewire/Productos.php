@@ -16,7 +16,7 @@ class Productos extends Component
     public $openEdit = false;
     public $openShow = false; // Falta el show
 
-    public $denominacion, $clase, $imagen, $imagen_nueva;
+    public $denominacion, $imagen, $imagen_nueva;
 
     public $producto;
 
@@ -24,7 +24,6 @@ class Productos extends Component
 
     protected $rules = [
         'producto.denominacion' => 'required|min:4|string|max:100',
-        'producto.clase' => 'required|min:4|string|max:50',
         'imagen_nueva' => 'nullable|sometimes|image|mimes:png,jpg|max:2048',
     ];
 
@@ -40,7 +39,6 @@ class Productos extends Component
 
         $this->validate([
             'denominacion' => 'required|min:4|string|max:100',
-            'clase' => 'required|min:4|string|max:50',
             'imagen' => 'required|image|mimes:png,jpg|max:2048',
         ]);
 
@@ -48,11 +46,10 @@ class Productos extends Component
 
         Producto::create([
             'denominacion' => $this->denominacion,
-            'clase' => $this->clase,
             'imagen' => Storage::disk('s3')->put('productos', $this->imagen, 'public'), // Aqui a la vez de guardarse el path de la imagen de S3, se sube la imagen a S3.
         ]);
 
-        $this->reset(['openCreate', 'denominacion', 'clase', 'imagen']);
+        $this->reset(['openCreate', 'denominacion', 'imagen']);
 
         $this->emit('render');
         $this->emit('success', 'Producto creado!' ,'El producto ha sido creado con exito!');
@@ -78,7 +75,7 @@ class Productos extends Component
 
         $this->producto->save();
 
-        $this->reset(['openEdit', 'denominacion', 'clase', 'imagen', 'imagen_nueva']); // Falta imagen
+        $this->reset(['openEdit', 'denominacion', 'imagen', 'imagen_nueva']); // Falta imagen
 
         $this->emit('render');
         $this->emit('success', 'Producto editado!' ,'El producto ha sido editado con exito!');
